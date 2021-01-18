@@ -13,4 +13,9 @@ defmodule ElixirFizzbuzz do
   end
 
   def handle_file_head({:error, reason}), do: "Error reading the file: #{reason}"
+
+  def fizz_buzz(number) when rem(number, 3) == 0 and rem(number, 5) == 0, do: :fizzbuzz
+  def fizz_buzz(number) when rem(number, 3) == 0, do: :fizz
+  def fizz_buzz(number) when rem(number, 5) == 0, do: :buzz
+  def fizz_buzz(number), do: number
 end

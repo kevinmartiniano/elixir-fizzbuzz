@@ -14,6 +14,12 @@ defmodule ElixirFizzbuzz do
 
   def handle_file_head({:error, reason}), do: "Error reading the file: #{reason}"
 
+  def convert_and_evaluate_numbers(number) do
+    number
+    |> String.to_integer()
+    |> fizz_buzz()
+  end
+
   def fizz_buzz(number) when rem(number, 3) == 0 and rem(number, 5) == 0, do: :fizzbuzz
   def fizz_buzz(number) when rem(number, 3) == 0, do: :fizz
   def fizz_buzz(number) when rem(number, 5) == 0, do: :buzz

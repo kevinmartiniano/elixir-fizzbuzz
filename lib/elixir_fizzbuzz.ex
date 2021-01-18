@@ -9,7 +9,7 @@ defmodule ElixirFizzbuzz do
   def handle_file_head({:ok, result}) do
     result
     |> String.split(",")
-    |> Enum.map(&String.to_integer/1)
+    |> Enum.map(&convert_and_evaluate_numbers/1)
   end
 
   def handle_file_head({:error, reason}), do: "Error reading the file: #{reason}"

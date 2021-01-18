@@ -7,12 +7,15 @@ defmodule ElixirFizzbuzz do
   end
 
   defp handle_file_head({:ok, result}) do
-    result
-    |> String.split(",")
-    |> Enum.map(&convert_and_evaluate_numbers/1)
+    result =
+      result
+      |> String.split(",")
+      |> Enum.map(&convert_and_evaluate_numbers/1)
+
+    {:ok, result}
   end
 
-  defp handle_file_head({:error, reason}), do: "Error reading the file: #{reason}"
+  defp handle_file_head({:error, reason}), do: {:error, "Error reading the file: #{reason}"}
 
   defp convert_and_evaluate_numbers(number) do
     number
